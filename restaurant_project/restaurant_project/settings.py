@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -88,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'reviewsdb',   # the name you gave in pgAdmin
         'USER': 'postgres',             # your PostgreSQL username
-        'PASSWORD': 'pawany12',    # the password you set during installation
+        'PASSWORD': os.getenv('pawany12'),    # the password you set during installation
         'HOST': 'localhost',            # since DB is on your laptop
         'PORT': '5432',                 # default PostgreSQL port
     }
