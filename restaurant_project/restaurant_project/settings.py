@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +29,7 @@ SECRET_KEY = 'django-insecure-62-$i*zcee8%^st&s(j4b24e3sg^(25&(5%=9(@s*^)$al%4_5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -84,15 +86,22 @@ WSGI_APPLICATION = 'restaurant_project.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'reviewsdb',   # the name you gave in pgAdmin
+#         'USER': 'postgres',             # your PostgreSQL username
+#         'PASSWORD': os.getenv('pawany12'),    # the password you set during installation
+#         'HOST': 'localhost',            # since DB is on your laptop
+#         'PORT': '5432',                 # default PostgreSQL port
+#     }
+# }
+
+# Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'reviewsdb',   # the name you gave in pgAdmin
-        'USER': 'postgres',             # your PostgreSQL username
-        'PASSWORD': os.getenv('pawany12'),    # the password you set during installation
-        'HOST': 'localhost',            # since DB is on your laptop
-        'PORT': '5432',                 # default PostgreSQL port
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get("DATABASE_URL")
+    )
 }
 
 
@@ -132,6 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
