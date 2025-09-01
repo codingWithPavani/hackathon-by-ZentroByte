@@ -1,0 +1,146 @@
+
+
+📑 Project Documentation: Restaurant Review Management System
+
+-----------------------------------------------------------------------------------------------------------------
+1. Project Overview
+
+The Restaurant Review Management System is a web-based application built using Django and integrated with a Machine Learning model for sentiment analysis of customer reviews.
+
+The ML model classifies reviews into Positive, Negative, or Neutral.
+
+Positive & Neutral reviews are displayed to customers.
+
+Negative reviews are only visible to the restaurant admin/owner, helping them identify drawbacks and improve services.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+2. Features
+
+✅ Customer Review Submission (name, rating, comment).
+
+✅ ML-based Sentiment Analysis (Positive, Negative, Neutral).z
+
+✅ Review Filtering:
+
+Positive & Neutral → Visible to all.
+
+Negative → Visible only to admin.
+
+✅ Admin Dashboard:
+
+View all customer reviews.
+
+✅ User Authentication (login/logout for admin).
+
+✅ Responsive Frontend (HTML, CSS, Bootstrap/Tailwind).
+
+------------------------------------------------------------------------------------------------------------------------
+
+3. Tech Stack
+
+Backend: Django (Python)
+
+Frontend: HTML, CSS, Bootstrap
+
+Database: SQLite (default in Django)
+
+Machine Learning: Scikit-learn (Logistic Regression / Naive Bayes model)
+
+Libraries:
+
+scikit-learn (ML)
+
+pandas (data processing)
+
+joblib (model saving/loading)
+
+------------------------------------------------------------------------------------------------------------------------
+
+4. System Architecture
+
+User submits a review → Stored in DB.
+
+Review text is passed to ML model → Classified into sentiment.
+
+Django saves review with sentiment label.
+
+On display:
+
+Positive & Neutral reviews → Show on customer page.
+
+Negative reviews → Show on owner dashboard only.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+5. Database Models
+
+Review Model:-
+
+class Review(models.Model):
+    name = models.CharField(max_length=100)
+    review = models.TextField()
+    sentiment = models.CharField(max_length=10)  # Positive/Negative/Neutral
+    is_resolved = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+6. URL Structure
+
+| URL                                       | View               | Description                      |
+| ----------------------------------------- | ------------------ | -------------------------------- |
+| `/`                                       | `home`             | Homepage                         |
+| `/about/`                                 | `about`            | About page                       |
+| `/contact/`                               | `contact`          | Contact page                     |
+| `/reviews/`                               | `customer_reviews` | Display customer-visible reviews |
+| `/owner/reviews/`                         | `owner_reviews`    | Admin dashboard (all reviews)    |
+| `/owner/reviews/<int:review_id>/resolve/` | `resolve_review`   | Mark review as resolved          |
+| `/login/`                                 | `login_view`       | Owner login                      |                         |
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+7. ML Model (Sentiment Classifier)
+
+Dataset: Pre-collected labeled restaurant/movie reviews.
+
+Preprocessing: Tokenization, stopword removal, TF-IDF vectorization.
+
+Algorithm: Logistic Regression / Naive Bayes.
+
+Training Script: ml_model.py
+
+Model saved as sentiment_model.pkl and loaded in Django views.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8. Workflow Example
+
+User → Submits review: "Food was tasty and service was excellent!" 
+
+Django → Passes review to ML model.
+
+Model → Classifies as Positive.
+
+Review stored in DB with sentiment Positive.
+
+On frontend:
+
+Customer side → Review displayed.
+
+Admin dashboard → Review displayed with option to resolve.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+9. Future Improvements
+
+📌 Add reply feature for admin.
+
+📌 Add visualization dashboard (charts of sentiment distribution).
+
+📌 Deploy ML model with FastAPI/Flask API for scalability.
+
+📌 Use deep learning model (BERT, LSTM) for better accuracy.
+
+📌 Deploy project on Heroku / AWS / Railway.
