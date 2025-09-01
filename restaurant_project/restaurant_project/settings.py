@@ -76,12 +76,24 @@ WSGI_APPLICATION = 'restaurant_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'reviewsdb',   # the name you gave in pgAdmin
+        'USER': 'postgres',             # your PostgreSQL username
+        'PASSWORD': 'pawany12',    # the password you set during installation
+        'HOST': 'localhost',            # since DB is on your laptop
+        'PORT': '5432',                 # default PostgreSQL port
     }
 }
+
 
 
 # Password validation
