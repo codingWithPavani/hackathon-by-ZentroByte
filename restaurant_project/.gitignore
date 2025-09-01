@@ -18,8 +18,9 @@ db.sqlite3
 
 # Virtual Environment
 venv/
-env/
+.env/
 .venv/
+env/
 
 # IDEs
 .vscode/
