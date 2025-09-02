@@ -70,7 +70,7 @@ def home(request):
 
     return render(request, 'reviews/home.html', {'form': form, 'positive_reviews': positive_reviews, 'neutral_reviews': neutral_reviews})
 
-
+@login_required(login_url='/login/')
 def admin_page(request):
     # Get negative reviews
     negative_reviews = Review.objects.filter(sentiment="Negative").order_by('-created_at')
