@@ -151,3 +151,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'admin_page'
 LOGOUT_REDIRECT_URL = 'index'
+
+NLTK_DATA = os.path.join(BASE_DIR, 'nltk_data')

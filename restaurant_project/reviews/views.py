@@ -9,6 +9,17 @@ from django.shortcuts import get_object_or_404
 from .models import Review
 from django.db.models import Count
 from django.http import JsonResponse
+import nltk
+
+# Tell NLTK where to find the vader_lexicon on Render
+nltk.data.path.append('/opt/render/project/src/nltk_data')
+
+
+import sys
+sys.path.append('/opt/render/project/src')
+import nltk_setup
+
+
 
 
 
