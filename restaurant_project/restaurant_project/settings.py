@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'restaurant_project.wsgi.application'
 # Database
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get("DATABASE_URL")
+        default=os.environ.get("postgresql://my_hackathon_db_user:4FYAOWthKgVESxaTC5d4OM6giHHLAFZF@dpg-d2diubgdl3ps73b34vbg-a.oregon-postgres.render.com/my_hackathon_db")
     )
 }
 
