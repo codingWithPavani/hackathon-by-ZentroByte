@@ -21,11 +21,13 @@
       --light: #F9F9F9;
       --dark: #333;
       --text: #555;
+      --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
     }
     
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: var(--light);
+      background-color: #f5f7fa;
       color: var(--text);
       line-height: 1.6;
     }
@@ -41,7 +43,7 @@
       background: linear-gradient(to right, var(--primary), var(--primary-light));
       color: white;
       padding: 1rem 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -82,9 +84,9 @@
       color: white;
       text-decoration: none;
       font-weight: 500;
-      padding: 5px 10px;
-      border-radius: 4px;
-      transition: background-color 0.3s;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: var(--transition);
     }
     
     nav ul li a:hover, 
@@ -94,12 +96,13 @@
     
     /* Hero Section */
     .about-hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
       height: 400px;
       display: flex;
       align-items: center;
       color: white;
       text-align: center;
+      margin-bottom: 3rem;
     }
     
     .hero-content {
@@ -110,13 +113,18 @@
     
     .hero-content h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: 3.2rem;
       margin-bottom: 1rem;
+    }
+    
+    .hero-content p {
+      font-size: 1.2rem;
+      opacity: 0.9;
     }
     
     /* About Section */
     .about {
-      padding: 4rem 0;
+      padding: 2rem 0 4rem;
     }
     
     .section-title {
@@ -141,60 +149,95 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      align-items: center;
+      margin-bottom: 4rem;
     }
     
-    .about-img {
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      height: 400px;
-      background-color: #f5f5f5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') no-repeat center center/cover;
+    .about-text {
+      padding-right: 2rem;
     }
     
     .about-text h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
       color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
     }
     
     .about-text p {
       margin-bottom: 1.5rem;
+      line-height: 1.8;
     }
     
-    .about-text ul {
-      margin-left: 2rem;
-      margin-bottom: 1.5rem;
+    .about-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      height: 400px;
     }
     
-    .about-text ul li {
-      margin-bottom: 0.5rem;
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 12px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: 600;
-      transition: background 0.3s;
+    /* Values Section */
+    .values {
+      background: white;
+      padding: 4rem 0;
+      position: relative;
     }
     
-    .btn:hover {
-      background: #e64a19;
+    .values::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-light), var(--secondary));
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .value-card {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      background: #f9fbf9;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+    }
+    
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .value-icon {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      transition: var(--transition);
+    }
+    
+    .value-card:hover .value-icon {
+      transform: scale(1.1);
+    }
+    
+    .value-card h3 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
+      color: var(--dark);
     }
     
     /* Team Section */
     .team {
       padding: 4rem 0;
-      background-color: white;
     }
     
     .team-grid {
@@ -205,68 +248,42 @@
     
     .team-member {
       text-align: center;
+      padding: 2rem 1.5rem;
       background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
-      transition: transform 0.3s;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
     }
     
     .team-member:hover {
       transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
     
-    .team-img {
-      width: 150px;
-      height: 150px;
+    .member-image {
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      background-color: var(--light);
-      margin: 0 auto 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-size: 3rem;
+      margin: 0 auto 1.5rem;
+      overflow: hidden;
+      border: 4px solid var(--primary-light);
+    }
+    
+    .member-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
     .team-member h3 {
-      color: var(--dark);
+      font-family: 'Playfair Display', serif;
       margin-bottom: 0.5rem;
+      color: var(--dark);
     }
     
-    .team-member p {
-      color: var(--text);
-    }
-    
-    /* Values Section */
-    .values {
-      padding: 4rem 0;
-    }
-    
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .value-card {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      padding: 2rem;
-      transition: transform 0.3s;
-    }
-    
-    .value-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .value-icon {
-      font-size: 3rem;
+    .team-member .role {
       color: var(--primary);
+      font-weight: 500;
       margin-bottom: 1rem;
     }
     
@@ -274,8 +291,9 @@
     footer {
       background: var(--dark);
       color: white;
-      padding: 2rem 0;
+      padding: 3rem 0;
       text-align: center;
+      margin-top: 4rem;
     }
     
     .footer-content {
@@ -288,6 +306,7 @@
     .footer-section h3 {
       margin-bottom: 1rem;
       color: var(--primary-light);
+      font-family: 'Playfair Display', serif;
     }
     
     .social-links {
@@ -299,16 +318,17 @@
     .social-links a {
       color: white;
       font-size: 1.5rem;
-      transition: color 0.3s;
+      transition: var(--transition);
     }
     
     .social-links a:hover {
       color: var(--primary-light);
+      transform: translateY(-3px);
     }
     
     .copyright {
       margin-top: 2rem;
-      padding-top: 1rem;
+      padding-top: 1.5rem;
       border-top: 1px solid #555;
     }
     
@@ -316,6 +336,14 @@
     @media (max-width: 992px) {
       .about-content {
         grid-template-columns: 1fr;
+      }
+      
+      .about-text {
+        padding-right: 0;
+      }
+      
+      .about-image {
+        height: 300px;
       }
     }
     
@@ -331,14 +359,25 @@
       
       nav ul {
         margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      nav ul li {
+        margin: 5px;
       }
       
       .about-hero {
-        height: 300px;
+        height: 350px;
       }
       
       .hero-content h2 {
-        font-size: 2rem;
+        font-size: 2.5rem;
+      }
+      
+      .values-grid,
+      .team-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -356,7 +395,7 @@
         <nav>
           <ul>
             <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'about' %}" class="active">About Us</a></li>
             <li><a href="{% url 'contact' %}">Contact</a></li>
             <li><a href="{% url 'home' %}">Reviews</a></li>
             <li><a href="{% url 'admin_page' %}">Admin</a></li>
@@ -370,7 +409,7 @@
   <div class="about-hero">
     <div class="hero-content">
       <h2>Our Story</h2>
-      <p>Discover the journey of Healthy Bites</p>
+      <p>Discover the journey behind Healthy Bites and our passion for nutritious, delicious food</p>
     </div>
   </div>
 
@@ -378,30 +417,20 @@
   <section class="about">
     <div class="container">
       <div class="section-title">
-        <h2>About Us</h2>
-        <p>Get to know the story behind Healthy Bites</p>
+        <h2>About Healthy Bites</h2>
+        <p>We're on a mission to make healthy eating delicious and accessible to everyone</p>
       </div>
       
       <div class="about-content">
-        <div class="about-img">
-          <!-- Background image will be displayed here -->
+        <div class="about-text">
+          <h3>Our Beginning</h3>
+          <p>Founded in 2018, Healthy Bites began as a small passion project between two nutritionists and a chef who shared a common vision: to create food that's both incredibly nutritious and exceptionally delicious.</p>
+          <p>We noticed that many people struggled to maintain healthy eating habits because they perceived healthy food as bland or unsatisfying. We set out to change that perception by creating dishes that delight the taste buds while nourishing the body.</p>
+          <p>Today, we're proud to serve our community with a diverse menu that caters to various dietary preferences while never compromising on flavor or quality.</p>
         </div>
         
-        <div class="about-text">
-          <h3>Our Story</h3>
-          <p>We started Healthy Bites with the mission to bring nutritious and delicious food to your plate. Our chefs use fresh ingredients and healthy recipes to make every meal special.</p>
-          
-          <p>Founded in 2015, Healthy Bites has grown from a small family restaurant to a beloved culinary destination in Srikakulam. Our commitment to quality, health, and authenticity has remained unchanged.</p>
-          
-          <h3>Our Values</h3>
-          <ul>
-            <li>Fresh, organic ingredients from local suppliers</li>
-            <li>Healthy cooking methods that preserve nutrients</li>
-            <li>Warm, welcoming atmosphere for all guests</li>
-            <li>Sustainable practices in our operations</li>
-          </ul>
-          
-          <a href="about/reviews/contact.html" class="btn">Visit Us</a>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Healthy Bites Restaurant Interior">
         </div>
       </div>
     </div>
@@ -420,24 +449,24 @@
           <div class="value-icon">
             <i class="fas fa-leaf"></i>
           </div>
-          <h3>Fresh Ingredients</h3>
-          <p>We source the freshest, locally-grown organic produce for all our dishes.</p>
+          <h3>Sustainability</h3>
+          <p>We source ingredients locally whenever possible, support organic farming practices, and minimize our environmental impact through eco-friendly packaging and waste reduction.</p>
         </div>
         
         <div class="value-card">
           <div class="value-icon">
             <i class="fas fa-heart"></i>
           </div>
-          <h3>Health First</h3>
-          <p>Every dish is crafted with your health and wellbeing in mind.</p>
+          <h3>Nutrition</h3>
+          <p>Every dish is crafted with nutritional balance in mind. We work with nutritionists to ensure our meals provide optimal health benefits without sacrificing taste.</p>
         </div>
         
         <div class="value-card">
           <div class="value-icon">
-            <i class="fas fa-recycle"></i>
+            <i class="fas fa-users"></i>
           </div>
-          <h3>Sustainability</h3>
-          <p>We're committed to eco-friendly practices and reducing our environmental impact.</p>
+          <h3>Community</h3>
+          <p>We believe in building strong community connections. We host cooking workshops, support local food initiatives, and create a welcoming space for everyone.</p>
         </div>
       </div>
     </div>
@@ -447,41 +476,36 @@
   <section class="team">
     <div class="container">
       <div class="section-title">
-        <h2>Our Team</h2>
-        <p>Meet the talented people behind Healthy Bites</p>
+        <h2>Meet Our Team</h2>
+        <p>The passionate people behind Healthy Bites</p>
       </div>
       
       <div class="team-grid">
         <div class="team-member">
-          <div class="team-img">
-            <i class="fas fa-user"></i>
+          <div class="member-image">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chef Maria Rodriguez">
           </div>
-          <h3>Rajesh Kumar</h3>
-          <p>Head Chef</p>
+          <h3>Maria Rodriguez</h3>
+          <div class="role">Executive Chef</div>
+          <p>With 15 years of culinary experience, Maria brings creativity and expertise to every dish.</p>
         </div>
         
         <div class="team-member">
-          <div class="team-img">
-            <i class="fas fa-user"></i>
+          <div class="member-image">
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dr. James Wilson">
           </div>
-          <h3>Priya Sharma</h3>
-          <p>Nutritionist</p>
+          <h3>Dr. James Wilson</h3>
+          <div class="role">Nutrition Director</div>
+          <p>James ensures every menu item meets our high nutritional standards without compromising taste.</p>
         </div>
         
         <div class="team-member">
-          <div class="team-img">
-            <i class="fas fa-user"></i>
+          <div class="member-image">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sarah Chen">
           </div>
-          <h3>Vikram Singh</h3>
-          <p>Restaurant Manager</p>
-        </div>
-        
-        <div class="team-member">
-          <div class="team-img">
-            <i class="fas fa-user"></i>
-          </div>
-          <h3>Anjali Patel</h3>
-          <p>Head of Sustainability</p>
+          <h3>Sarah Chen</h3>
+          <div class="role">Operations Manager</div>
+          <p>Sarah keeps everything running smoothly, from supplier relationships to customer experience.</p>
         </div>
       </div>
     </div>
@@ -496,13 +520,13 @@
           <p>Nutritious food that delights your taste buds</p>
         </div>
         
-        
         <div class="footer-section">
           <h3>Contact Info</h3>
           <p><i class="fas fa-map-marker-alt"></i> Srikakulam, Andhra Pradesh</p>
           <p><i class="fas fa-phone"></i> +91 9876543210</p>
           <p><i class="fas fa-envelope"></i> info@healthybites.com</p>
         </div>
+    
       </div>
       
       <div class="copyright">
