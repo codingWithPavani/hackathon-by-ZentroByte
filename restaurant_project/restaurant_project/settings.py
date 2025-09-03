@@ -86,23 +86,23 @@ WSGI_APPLICATION = 'restaurant_project.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'reviewsdb',   # the name you gave in pgAdmin
-#         'USER': 'postgres',             # your PostgreSQL username
-#         'PASSWORD': os.getenv('pawany12'),    # the password you set during installation
-#         'HOST': 'localhost',            # since DB is on your laptop
-#         'PORT': '5432',                 # default PostgreSQL port
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'reviewsdb',   # the name you gave in pgAdmin
+        'USER': 'postgres',             # your PostgreSQL username
+        'PASSWORD': os.getenv('pawany12'),    # the password you set during installation
+        'HOST': 'localhost',            # since DB is on your laptop
+        'PORT': '5432',                 # default PostgreSQL port
+    }
+}
 
 # Database
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get("postgresql://my_hackathon_db_user:4FYAOWthKgVESxaTC5d4OM6giHHLAFZF@dpg-d2diubgdl3ps73b34vbg-a.oregon-postgres.render.com/my_hackathon_db")
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ.get("postgresql://my_hackathon_db_user:4FYAOWthKgVESxaTC5d4OM6giHHLAFZF@dpg-d2diubgdl3ps73b34vbg-a.oregon-postgres.render.com/my_hackathon_db")
+#     )
+# }
 
 
 
